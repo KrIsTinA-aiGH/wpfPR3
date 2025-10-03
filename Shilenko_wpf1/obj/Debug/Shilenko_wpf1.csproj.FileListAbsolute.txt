@@ -1,0 +1,193 @@
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.g.cs
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.cache
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.lref
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe.config
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.g.resources
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.Properties.Resources.resources
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.GenerateResource.cache
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.CoreCompileInputs.cache
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.g.cs
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.baml
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.g.cs
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.baml
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.g.cs
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.baml
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.g.cs
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.baml
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.g.cs
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.baml
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.g.cs
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.baml
+C:\Users\IkristinaI\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csprojAssemblyReference.cache
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe.config
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csprojAssemblyReference.cache
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.cache
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.lref
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.g.resources
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.Properties.Resources.resources
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.GenerateResource.cache
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.CoreCompileInputs.cache
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.cache
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.lref
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe.config
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.baml
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.baml
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.baml
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.baml
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.baml
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.baml
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.baml
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.g.resources
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.Properties.Resources.resources
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.GenerateResource.cache
+C:\Users\IkristinaI\OneDrive\Desktop\ПР2\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.CoreCompileInputs.cache
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe.config
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.cache
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.lref
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.baml
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.baml
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.baml
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.baml
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.baml
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.baml
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.baml
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.g.resources
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.Properties.Resources.resources
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.GenerateResource.cache
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.CoreCompileInputs.cache
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Autho.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Client.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Autho.baml
+C:\Users\IkristinaI\OneDrive\Desktop\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Client.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe.config
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Autho.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Client.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.cache
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.lref
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Autho.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Client.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.g.resources
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.Properties.Resources.resources
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.GenerateResource.cache
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.CoreCompileInputs.cache
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csprojAssemblyReference.cache
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe.config
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Autho.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Client.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.cache
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.lref
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Autho.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Client.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.baml
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.g.resources
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.Properties.Resources.resources
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.GenerateResource.cache
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.CoreCompileInputs.cache
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\Новая папка — копия — копия\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe.config
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\bin\Debug\Shilenko_wpf1.pdb
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csprojAssemblyReference.cache
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Autho.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Client.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.g.cs
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.cache
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1_MarkupCompile.lref
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\App.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\MainWindow.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Autho.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Pages\Client.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_1.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_2.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_3.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_4.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\zad_5.baml
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.g.resources
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.Properties.Resources.resources
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.GenerateResource.cache
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.csproj.CoreCompileInputs.cache
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.exe
+C:\Users\IkristinaI\OneDrive\Desktop\3 КУРС\Разработка программных модулей\пр3\Shilenko_wpf1\Shilenko_wpf1\obj\Debug\Shilenko_wpf1.pdb
