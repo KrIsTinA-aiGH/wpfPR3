@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="Регистрация в Дом Кофе. Создайте аккаунт для доступа к персональным скидкам, истории заказов и бонусной программе.">
+    <title>Регистрация - Дом Кофе | Создать аккаунт</title>
+    <link rel="canonical" href="https://domkofe.ru/registraciya/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="images/coffee-icon.png" alt="Иконка кофейни" class="logo-icon">
+                <span>Дом</span> Кофе
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="o-nas.html">О нас</a></li>
+                    <li><a href="katalog-kofe.html">Ассортимент</a></li>
+                    <li><a href="kofejnya.html">Кофейня</a></li>
+                    <li><a href="kontakty.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <h1>Регистрация</h1>
+                <p>Создайте аккаунт, чтобы пользоваться нашими услугами.</p>
+            </div>
+            
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">Полное имя</label>
+                    <input type="text" id="name" placeholder="Введите ваше имя" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Электронная почта</label>
+                    <input type="email" id="email" placeholder="Введите ваш email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" placeholder="Создайте пароль" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">Подтвердите пароль</label>
+                    <input type="password" id="confirm-password" placeholder="Подтвердите пароль" required>
+                </div>
+                
+                <button type="submit" class="btn">Зарегистрироваться</button>
+                
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                
+                <button type="button" class="google-btn">
+                    <i class="fab fa-google"></i>
+                    Зарегистрироваться через Google
+                </button>
+            </form>
+            
+            <div class="auth-links">
+                <p>Уже есть аккаунт? <a href="vhod.html">Войти</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+   <footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Дом Кофе</h3>
+                <p>Невозможно приготовить душевный кофе не вложив в него сердце.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Навигация</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="o-nas.html">О нас</a></li>
+                    <li><a href="katalog-kofe.html">Ассортимент</a></li>
+                    <li><a href="kofejnya.html">Кофейня</a></li>
+                    <li><a href="kontakty.html">Контакты</a></li>
+                    <li><a href="vhod.html" id="footer-login-link">Вход</a></li>
+                    <li id="footer-account-link" style="display: none;">
+                        <a href="lichnyj-kabinet.html">Личный кабинет</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Ассортимент</h3>
+                <ul>
+                    <li><a href="katalog-kofe.html">Зерновой кофе</a></li>
+                    <li><a href="katalog-kofe.html">Молотый кофе</a></li>
+                    <li><a href="katalog-kofe.html">Капсулы</a></li>
+                    <li><a href="katalog-kofe.html">Аксессуары</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>г. Новосибирск, ул. Ленина, 12</p>
+                <p>+7 (495) 123-45-67</p>
+                <p>info@domkofe.ru</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Дом Кофе. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script src="auth-utils.js"></script>
+<script src="auth.js"></script>
+
+</body>
+</html>

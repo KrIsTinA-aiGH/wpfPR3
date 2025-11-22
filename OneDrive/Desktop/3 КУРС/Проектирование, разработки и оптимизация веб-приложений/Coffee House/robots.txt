@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /css/
+Disallow: /js/
+Disallow: /account.html
+Disallow: /login.html
+Disallow: /register.html
+Allow: /index.html
+Allow: /about.html
+Allow: /contacts.html
+Allow: /coffee-shop.html
+Allow: /products.html
