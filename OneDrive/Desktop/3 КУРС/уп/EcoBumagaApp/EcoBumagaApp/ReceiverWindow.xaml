@@ -1,0 +1,492 @@
+﻿<Window x:Class="EcoBumagaApp.ReceiverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Приёмный пункт склада"
+        Height="820"
+        Width="1220"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8F9FA">
+
+    <Window.Resources>
+        <!-- Стиль карточек -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#D1D9E0"/>
+            <Setter Property="Margin" Value="12"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#000000"
+                              Direction="315"                 
+                            ShadowDepth="2"
+                            BlurRadius="12"
+                            Opacity="0.18"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль бейджа статуса -->
+        <Style x:Key="StatusBadgeStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="MinWidth" Value="100"/>
+        </Style>
+
+        <!-- Единый стиль заголовков таблиц -->
+        <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1F2A38"/>
+            <Setter Property="Foreground" Value="#F7FAFC"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,8"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="#1F2A38">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Логотип и название -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <TextBlock Text="📦" FontSize="28" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <StackPanel>
+                        <TextBlock Text="ПРИЁМНЫЙ ПУНКТ СКЛАДА"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+                        <TextBlock Text="Первичный приём и контроль сырья"
+                                   FontSize="11"
+                                   Foreground="#CBD5E0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Информация о приёмщике -->
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+                    <TextBlock x:Name="txtReceiverName" Text=""
+                               Foreground="White"
+                               FontSize="16"
+                               HorizontalAlignment="Right"/>
+                    <TextBlock Text="Склад №1 • Зона приёмки"
+                               Foreground="#CBD5E0"
+                               FontSize="11"
+                               HorizontalAlignment="Right"/>
+                </StackPanel>
+
+                <!-- Кнопки -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Content="📊 Отчёт за смену" Width="150" Height="36" Margin="5"
+                            Background="#2B6CB0" Foreground="White"/>
+                    <Button Content="📄 Документы" Width="140" Height="36" Margin="5"
+                            Background="#2F855A" Foreground="White"/>
+                    <Button x:Name="btnLogout" Content="Выйти" Width="80" Height="36" Margin="5"
+                            Background="#2D3748" Foreground="White" Click="BtnLogout_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент -->
+        <TabControl Grid.Row="1" Margin="15" Background="White" BorderBrush="#CBD5E0" BorderThickness="1">
+
+            <!-- Вкладка 1: Приёмка партий -->
+            <TabItem Header="📦 Приёмка партий">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Левая часть - ожидающие машины -->
+                    <Grid Grid.Column="0" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Заголовок -->
+                        <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="🚛 Ожидают приёмки" FontSize="17" FontWeight="SemiBold"/>
+                                <TextBlock Text=" (3 машины)" Foreground="#718096" FontSize="17" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Список машин -->
+                        <ScrollViewer Grid.Row="1">
+                            <StackPanel>
+                                <!-- Машина 1 -->
+                                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,16,0">
+                                            <TextBlock Text="🚚" FontSize="34"/>
+                                            <TextBlock Text="А001АА777" FontWeight="Medium" HorizontalAlignment="Center" FontSize="12"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Text="Водитель: Иванов А.В." FontWeight="Medium"/>
+                                            <TextBlock Text="Маршрут: Центр → Химки → Балашиха" Foreground="#718096" Margin="0,6,0,0"/>
+                                            <TextBlock Text="Заявок: 3" FontWeight="Medium" Margin="0,6,0,0"/>
+                                            <TextBlock Text="Ожидаемый вес: 650 кг" Foreground="#2B6CB0" FontWeight="Medium"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" Width="200">
+                                            <Border Style="{StaticResource StatusBadgeStyle}" Background="#9B2C2C" Margin="0,0,0,12">
+                                                <TextBlock Text="Ожидает" Foreground="White" FontWeight="Medium"/>
+                                            </Border>
+                                            <Button Content="✅ Начать приёмку"
+                                                    Width="180" Height="38" Margin="0,0,0,8"
+                                                    Background="#2F855A" Foreground="White"/>
+                                            <Button Content="ℹ️ Документы"
+                                                    Width="180" Height="34"
+                                                    Background="#2B6CB0" Foreground="White"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Машина 2 -->
+                                <Border Style="{StaticResource CardStyle}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,16,0">
+                                            <TextBlock Text="🚛" FontSize="34"/>
+                                            <TextBlock Text="Е004ЕЕ777" FontWeight="Medium" HorizontalAlignment="Center" FontSize="12"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Text="Водитель: Петров С.М." FontWeight="Medium"/>
+                                            <TextBlock Text="Маршрут: Подольск → Королёв" Foreground="#718096" Margin="0,6,0,0"/>
+                                            <TextBlock Text="Заявок: 2" FontWeight="Medium" Margin="0,6,0,0"/>
+                                            <TextBlock Text="Ожидаемый вес: 800 кг" Foreground="#2B6CB0" FontWeight="Medium"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" Width="200">
+                                            <Border Style="{StaticResource StatusBadgeStyle}" Background="#B7791F" Margin="0,0,0,12">
+                                                <TextBlock Text="В пути" Foreground="White" FontWeight="Medium"/>
+                                            </Border>
+                                            <Button Content="🕐 Прибывает через 15 мин"
+                                                    Width="180" Height="38" Margin="0,0,0,8"
+                                                    Background="#718096" Foreground="White"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+
+                    <!-- Правая часть - активная приёмка -->
+                    <Grid Grid.Column="1" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Форма приёмки -->
+                        <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                            <StackPanel>
+                                <TextBlock Text="📝 Активная приёмка" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,12"/>
+
+                                <StackPanel Margin="0,0,0,16">
+                                    <TextBlock Text="Контрольное взвешивание:" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <Grid Margin="0,8,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox x:Name="txtControlWeight" Text="645" Height="36" Padding="10"/>
+                                        <TextBlock Grid.Column="1" Text="кг" VerticalAlignment="Center" Margin="12,0,0,0" FontWeight="Medium"/>
+                                    </Grid>
+                                    <TextBlock Text="Заявлено водителем: 650 кг" Foreground="#718096" FontSize="12" Margin="0,8,0,0"/>
+                                    <TextBlock Text="Расхождение: -5 кг (-0.8%)" Foreground="#9B2C2C" FontSize="12" FontWeight="Medium" Margin="0,4,0,0"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="0,0,0,16">
+                                    <TextBlock Text="Визуальный осмотр:" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <WrapPanel Margin="0,8,0,0">
+                                        <CheckBox Content="Упаковка целая" Margin="0,0,16,8" IsChecked="True"/>
+                                        <CheckBox Content="Нет загрязнений" Margin="0,0,16,8" IsChecked="True"/>
+                                        <CheckBox Content="Нет влаги" Margin="0,0,16,8" IsChecked="True"/>
+                                        <CheckBox Content="Маркировка на месте" IsChecked="True"/>
+                                    </WrapPanel>
+                                </StackPanel>
+
+                                <StackPanel>
+                                    <TextBlock Text="Фотофиксация:" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <Button Content="📸 Сделать фото повреждений"
+                                            Width="220" Height="38" Margin="0,8,0,0"
+                                            Background="#4A5568" Foreground="White"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Документы и подписи -->
+                        <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+                            <StackPanel>
+                                <TextBlock Text="📄 Документы" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                                <StackPanel Margin="0,0,0,16">
+                                    <TextBlock Text="Акт приёмки №:" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <TextBox x:Name="txtActNumber" Text="АП-2026-02-07-001" Height="36" Padding="10" Margin="0,6,0,0"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,0,0,16">
+                                    <TextBlock Text="Примечания:" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <TextBox x:Name="txtReceivingNotes" Height="80" TextWrapping="Wrap" AcceptsReturn="True"
+                                             Text="Незначительное расхождение по весу. Упаковка в хорошем состоянии."
+                                             Padding="10" Margin="0,6,0,0"/>
+                                </StackPanel>
+                                <Button x:Name="btnCompleteReceiving"
+                                        Content="✅ Завершить приёмку"
+                                        Width="220" Height="42"
+                                        Background="#2F855A" Foreground="White"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка 2: Журнал приёмки -->
+            <TabItem Header="📋 Журнал приёмки">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Фильтры -->
+                    <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                        <WrapPanel Orientation="Horizontal">
+                            <DatePicker Width="160" Height="38" Margin="4"/>
+                            <ComboBox Width="160" Height="38" Margin="4" SelectedIndex="0">
+                                <ComboBoxItem Content="Все водители"/>
+                                <ComboBoxItem Content="Иванов А.В."/>
+                                <ComboBoxItem Content="Петров С.М."/>
+                            </ComboBox>
+                            <ComboBox Width="160" Height="38" Margin="4" SelectedIndex="0">
+                                <ComboBoxItem Content="Все статусы"/>
+                                <ComboBoxItem Content="Принято"/>
+                                <ComboBoxItem Content="На проверке"/>
+                                <ComboBoxItem Content="С расхождениями"/>
+                            </ComboBox>
+                            <Button Content="🔍 Поиск" Width="110" Height="38" Margin="4"
+                                    Background="#2D3748" Foreground="White"/>
+                            <Button Content="📥 Экспорт в Excel" Width="160" Height="38" Margin="4"
+                                    Background="#2F855A" Foreground="White"/>
+                        </WrapPanel>
+                    </Border>
+
+                    <!-- Таблица -->
+                    <DataGrid Grid.Row="1" Margin="0"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              HeadersVisibility="Column"
+                              RowHeight="42">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№ акта" Width="130" HeaderStyle="{StaticResource DataGridHeaderStyle}">
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="ActNumber"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Дата/время" Width="130" HeaderStyle="{StaticResource DataGridHeaderStyle}">
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="DateTime"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Водитель" Width="170"/>
+                            <DataGridTextColumn Header="Транспорт" Width="130"/>
+                            <DataGridTextColumn Header="Заявленный вес" Width="110" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Фактический вес" Width="110" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Расхождение" Width="110" HeaderStyle="{StaticResource DataGridHeaderStyle}">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Difference"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Статус" Width="130">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Status"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Документы" Width="110">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="📄" Width="34" Height="34" HorizontalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка 3: Статистика склада -->
+            <TabItem Header="📊 Статистика склада">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Статистика приёмки за текущий месяц"
+                               FontSize="20" FontWeight="SemiBold" Foreground="#1F2A38" Margin="0,0,0,16"/>
+
+                    <!-- Карточки статистики -->
+                    <WrapPanel Grid.Row="1" Margin="0,0,0,24" Orientation="Horizontal">
+                        <Border Style="{StaticResource CardStyle}" Background="#2B6CB0" RenderTransformOrigin="0.703,-0.153" Height="116" Width="162">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="ПРИНЯТО ПАРТИЙ" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                <TextBlock Text="142" Foreground="White" FontSize="32" FontWeight="Medium" Height="40" Width="62"/>
+                                <TextBlock Text="за месяц" Foreground="White" FontSize="13" Opacity="0.95"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource CardStyle}" Background="#2F855A" Width="137" Height="117">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="ОБЩИЙ ВЕС" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                <TextBlock Text="45.8 т" Foreground="White" FontSize="32" FontWeight="Medium"/>
+                                <TextBlock Text="макулатуры" Foreground="White" FontSize="13" Opacity="0.95"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource CardStyle}" Background="#4A5568">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="СРЕДНЕЕ РАСХОЖДЕНИЕ" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                <TextBlock Text="2.3%" Foreground="White" FontSize="32" FontWeight="Medium"/>
+                                <TextBlock Text="по весу" Foreground="White" FontSize="13" Opacity="0.95"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource CardStyle}" Background="#9B2C2C">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="ПАРТИЙ С ПРОБЛЕМАМИ" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                <TextBlock Text="8" Foreground="White" FontSize="32" FontWeight="Medium"/>
+                                <TextBlock Text="(5.6%)" Foreground="White" FontSize="13" Opacity="0.95"/>
+                            </StackPanel>
+                        </Border>
+                    </WrapPanel>
+
+                    <!-- Детальная статистика -->
+                    <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="12,117,12,12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="184*"/>
+                                <ColumnDefinition Width="57*"/>
+                                <ColumnDefinition Width="853*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Text="Распределение по типам сырья" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,16" Grid.ColumnSpan="3"/>
+
+                            <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Типы сырья -->
+                                <StackPanel Grid.Column="0">
+                                    <StackPanel Margin="0,0,0,12">
+                                        <TextBlock Text="📄 Офисная бумага" FontWeight="Medium"/>
+                                        <ProgressBar Value="45" Height="18" Margin="0,8,0,0" Foreground="#2B6CB0"/>
+                                        <TextBlock Text="45% • 20.6 т" HorizontalAlignment="Right" FontSize="12" Foreground="#718096"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0,0,0,12">
+                                        <TextBlock Text="📦 Картон" FontWeight="Medium"/>
+                                        <ProgressBar Value="30" Height="18" Margin="0,8,0,0" Foreground="#2F855A"/>
+                                        <TextBlock Text="30% • 13.7 т" HorizontalAlignment="Right" FontSize="12" Foreground="#718096"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0,0,0,12">
+                                        <TextBlock Text="📰 Газетная бумага" FontWeight="Medium"/>
+                                        <ProgressBar Value="15" Height="18" Margin="0,8,0,0" Foreground="#4A5568"/>
+                                        <TextBlock Text="15% • 6.9 т" HorizontalAlignment="Right" FontSize="12" Foreground="#718096"/>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Text="📚 Смешанная макулатура" FontWeight="Medium"/>
+                                        <ProgressBar Value="10" Height="18" Margin="0,8,0,0" Foreground="#718096"/>
+                                        <TextBlock Text="10% • 4.6 т" HorizontalAlignment="Right" FontSize="12" Foreground="#718096"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- Топ водители -->
+                                <Border Grid.Column="1" Style="{StaticResource CardStyle}" Margin="20,0,0,0">
+                                    <StackPanel>
+                                        <TextBlock Text="🏆 Лучшие водители по точности" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                                        <StackPanel>
+                                            <Border Padding="12" Background="#F7FAFC" CornerRadius="5" Margin="0,0,0,8">
+                                                <Grid>
+                                                    <TextBlock Text="1. Иванов А.В." FontWeight="Medium"/>
+                                                    <TextBlock Text="±1.2%" HorizontalAlignment="Right" Foreground="#2F855A"/>
+                                                </Grid>
+                                            </Border>
+                                            <Border Padding="12" Background="#F7FAFC" CornerRadius="5" Margin="0,0,0,8">
+                                                <Grid>
+                                                    <TextBlock Text="2. Петров С.М." FontWeight="Medium"/>
+                                                    <TextBlock Text="±1.8%" HorizontalAlignment="Right" Foreground="#2F855A"/>
+                                                </Grid>
+                                            </Border>
+                                            <Border Padding="12" Background="#F7FAFC" CornerRadius="5">
+                                                <Grid>
+                                                    <TextBlock Text="3. Сидоров П.И." FontWeight="Medium"/>
+                                                    <TextBlock Text="±2.5%" HorizontalAlignment="Right" Foreground="#9B2C2C"/>
+                                                </Grid>
+                                            </Border>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!-- Подвал -->
+        <Border Grid.Row="2" Background="#EDF2F7">
+            <Grid>
+                <TextBlock Text="Приёмный пункт склада • ООО «ЭкоБумага» • Контроль качества и документооборот"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="#4A5568"
+                           FontSize="12"/>
+                <TextBlock Text="📞 Контакт сортировщика: +7 (495) 111-22-33"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="15,0,0,0"
+                           Foreground="#4A5568"
+                           FontSize="11"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

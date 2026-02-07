@@ -1,0 +1,374 @@
+﻿<Window x:Class="EcoBumagaApp.DirectorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Панель директора"
+        Height="920"
+        Width="1420"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8F9FA">
+
+    <Window.Resources>
+        <!-- Стиль заголовков таблиц -->
+        <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1F2A38"/>
+            <Setter Property="Foreground" Value="#F7FAFC"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,8"/>
+        </Style>
+
+        <!-- Стиль карточек KPI и блоков -->
+        <Style x:Key="KpiCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#000000" Direction="320" ShadowDepth="1" BlurRadius="4" Opacity="0.08"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль заголовков разделов -->
+        <Style x:Key="DashboardHeader" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+            <Setter Property="Foreground" Value="#1F2A38"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="#1F2A38">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <TextBlock Text="👑" FontSize="28" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <StackPanel>
+                        <TextBlock Text="ПАНЕЛЬ ДИРЕКТОРА"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+                        <TextBlock Text="Стратегическое управление"
+                                   FontSize="11"
+                                   Foreground="#CBD5E0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+                    <TextBlock x:Name="txtDirectorName" Text=""
+                               Foreground="White"
+                               FontSize="16"
+                               HorizontalAlignment="Right"/>
+                    <TextBlock Text="Общий контроль и аналитика"
+                               Foreground="#CBD5E0"
+                               FontSize="11"
+                               HorizontalAlignment="Right"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Content="📊 Сводный отчёт" Width="140" Height="36" Margin="5"
+                            Background="#2B6CB0" Foreground="White"/>
+                    <Button x:Name="btnLogout" Content="Выйти" Width="80" Height="36" Margin="5"
+                            Background="#2D3748" Foreground="White" Click="BtnLogout_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент -->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Ключевые показатели -->
+            <WrapPanel Grid.Row="0" Margin="0,0,0,20" Orientation="Horizontal">
+                <!-- Выручка -->
+                <Border Style="{StaticResource KpiCardStyle}" Width="230" Height="130">
+                    <StackPanel>
+                        <TextBlock Text="💰 Выручка" FontSize="13" Foreground="#718096"/>
+                        <TextBlock Text="1.24 млн руб." FontSize="26" FontWeight="Bold" Foreground="#2F855A" Margin="0,8,0,0"/>
+                        <TextBlock Text="+12.5% к прошлому месяцу" FontSize="12" Foreground="#2F855A"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Прибыль -->
+                <Border Style="{StaticResource KpiCardStyle}" Width="230" Height="130">
+                    <StackPanel>
+                        <TextBlock Text="📈 Чистая прибыль" FontSize="13" Foreground="#718096"/>
+                        <TextBlock Text="402 тыс. руб." FontSize="26" FontWeight="Bold" Foreground="#2F855A" Margin="0,8,0,0"/>
+                        <TextBlock Text="Маржинальность: 32.1%" FontSize="12" Foreground="#2B6CB0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Принято сырья -->
+                <Border Style="{StaticResource KpiCardStyle}" Width="230" Height="130">
+                    <StackPanel>
+                        <TextBlock Text="📦 Принято сырья" FontSize="13" Foreground="#718096"/>
+                        <TextBlock Text="8.5 тонн" FontSize="26" FontWeight="Bold" Foreground="#2B6CB0" Margin="0,8,0,0"/>
+                        <TextBlock Text="+18.3% к прошлому месяцу" FontSize="12" Foreground="#2F855A"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Заявок выполнено -->
+                <Border Style="{StaticResource KpiCardStyle}" Width="230" Height="130">
+                    <StackPanel>
+                        <TextBlock Text="📋 Заявок выполнено" FontSize="13" Foreground="#718096"/>
+                        <TextBlock Text="147" FontSize="26" FontWeight="Bold" Foreground="#2B6CB0" Margin="0,8,0,0"/>
+                        <TextBlock Text="Средний чек: 8 500 руб." FontSize="12" Foreground="#718096"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Клиенты -->
+                <Border Style="{StaticResource KpiCardStyle}" Width="230" Height="130">
+                    <StackPanel>
+                        <TextBlock Text="👥 Клиенты" FontSize="13" Foreground="#718096"/>
+                        <TextBlock Text="89" FontSize="26" FontWeight="Bold" Foreground="#4A5568" Margin="0,8,0,0"/>
+                        <TextBlock Text="+5 новых за месяц" FontSize="12" Foreground="#2F855A"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Эффективность -->
+                <Border Style="{StaticResource KpiCardStyle}" Width="230" Height="130">
+                    <StackPanel>
+                        <TextBlock Text="⚡ Эффективность" FontSize="13" Foreground="#718096"/>
+                        <TextBlock Text="87%" FontSize="26" FontWeight="Bold" Foreground="#2F855A" Margin="0,8,0,0"/>
+                        <TextBlock Text="Загрузка транспорта" FontSize="12" Foreground="#718096"/>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+            <!-- Детальная аналитика -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Левая колонка -->
+                <Grid Grid.Column="0" Margin="0,0,12,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Динамика объёмов -->
+                    <Border Grid.Row="0" Style="{StaticResource KpiCardStyle}" Margin="0,0,0,16">
+                        <StackPanel>
+                            <TextBlock Text="📊 Динамика объёмов сырья по месяцам" Style="{StaticResource DashboardHeader}"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                                    <TextBlock Text="4.2 т" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <Rectangle Height="80" Width="24" Fill="#CBD5E0" Margin="0,6,0,0" RadiusX="3" RadiusY="3"/>
+                                    <TextBlock Text="Окт" FontSize="11" Margin="0,6,0,0" Foreground="#718096"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                                    <TextBlock Text="5.1 т" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <Rectangle Height="95" Width="24" Fill="#CBD5E0" Margin="0,6,0,0" RadiusX="3" RadiusY="3"/>
+                                    <TextBlock Text="Ноя" FontSize="11" Margin="0,6,0,0" Foreground="#718096"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                                    <TextBlock Text="6.8 т" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <Rectangle Height="130" Width="24" Fill="#CBD5E0" Margin="0,6,0,0" RadiusX="3" RadiusY="3"/>
+                                    <TextBlock Text="Дек" FontSize="11" Margin="0,6,0,0" Foreground="#718096"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="3" HorizontalAlignment="Center">
+                                    <TextBlock Text="7.2 т" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <Rectangle Height="140" Width="24" Fill="#CBD5E0" Margin="0,6,0,0" RadiusX="3" RadiusY="3"/>
+                                    <TextBlock Text="Янв" FontSize="11" Margin="0,6,0,0" Foreground="#718096"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="4" HorizontalAlignment="Center">
+                                    <TextBlock Text="7.8 т" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <Rectangle Height="150" Width="24" Fill="#CBD5E0" Margin="0,6,0,0" RadiusX="3" RadiusY="3"/>
+                                    <TextBlock Text="Фев" FontSize="11" Margin="0,6,0,0" Foreground="#718096"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="5" HorizontalAlignment="Center">
+                                    <TextBlock Text="8.5 т" FontWeight="Medium" Foreground="#4A5568"/>
+                                    <Rectangle Height="160" Width="24" Fill="#2F855A" Margin="0,6,0,0" RadiusX="3" RadiusY="3"/>
+                                    <TextBlock Text="Мар" FontSize="11" Margin="0,6,0,0" Foreground="#718096"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Распределение по типам сырья -->
+                    <Border Grid.Row="1" Style="{StaticResource KpiCardStyle}" Margin="0,0,0,16">
+                        <StackPanel>
+                            <TextBlock Text="📦 Распределение по типам сырья" Style="{StaticResource DashboardHeader}"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                        <Rectangle Width="14" Height="14" Fill="#2B6CB0" Margin="0,0,6,0" RadiusX="2" RadiusY="2"/>
+                                        <TextBlock Text="Офисная бумага" FontSize="13"/>
+                                        <TextBlock Text="42%" FontWeight="Medium" Margin="8,0,0,0"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                        <Rectangle Width="14" Height="14" Fill="#2F855A" Margin="0,0,6,0" RadiusX="2" RadiusY="2"/>
+                                        <TextBlock Text="Картон" FontSize="13"/>
+                                        <TextBlock Text="28%" FontWeight="Medium" Margin="8,0,0,0"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                        <Rectangle Width="14" Height="14" Fill="#4A5568" Margin="0,0,6,0" RadiusX="2" RadiusY="2"/>
+                                        <TextBlock Text="Газетная" FontSize="13"/>
+                                        <TextBlock Text="18%" FontWeight="Medium" Margin="8,0,0,0"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                        <Rectangle Width="14" Height="14" Fill="#718096" Margin="0,0,6,0" RadiusX="2" RadiusY="2"/>
+                                        <TextBlock Text="Журналы" FontSize="13"/>
+                                        <TextBlock Text="8%" FontWeight="Medium" Margin="8,0,0,0"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Rectangle Width="14" Height="14" Fill="#CBD5E0" Margin="0,0,6,0" RadiusX="2" RadiusY="2"/>
+                                        <TextBlock Text="Прочее" FontSize="13"/>
+                                        <TextBlock Text="4%" FontWeight="Medium" Margin="8,0,0,0"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Эффективность пунктов приёма -->
+                    <Border Grid.Row="2" Style="{StaticResource KpiCardStyle}">
+                        <StackPanel>
+                            <TextBlock Text="📍 Эффективность пунктов приёма" Style="{StaticResource DashboardHeader}"/>
+                            <DataGrid x:Name="dgReceptionPoints"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      HeadersVisibility="Column"
+                                      RowHeight="36"
+                                      MaxHeight="220">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Пункт" Width="200" Binding="{Binding Name}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                                    <DataGridTextColumn Header="Объём" Width="90" Binding="{Binding Volume}"/>
+                                    <DataGridTextColumn Header="Заявок" Width="80" Binding="{Binding Applications}"/>
+                                    <DataGridTextColumn Header="Загрузка" Width="110">
+                                        <DataGridTextColumn.CellStyle>
+                                            <Style TargetType="DataGridCell">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="FontWeight" Value="Medium"/>
+                                            </Style>
+                                        </DataGridTextColumn.CellStyle>
+                                        <DataGridTextColumn.Binding>
+                                            <Binding Path="LoadPercentage" StringFormat="{}{0}%"/>
+                                        </DataGridTextColumn.Binding>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <!-- Правая колонка -->
+                <Grid Grid.Column="1" Margin="12,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Топ-5 клиентов -->
+                    <Border Grid.Row="0" Style="{StaticResource KpiCardStyle}" Margin="0,0,0,16">
+                        <StackPanel>
+                            <TextBlock Text="👑 Топ-5 клиентов по объёму" Style="{StaticResource DashboardHeader}"/>
+                            <DataGrid x:Name="dgTopClients"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      HeadersVisibility="Column"
+                                      RowHeight="36"
+                                      MaxHeight="220">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Клиент" Width="200" Binding="{Binding Name}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                                    <DataGridTextColumn Header="Объём" Width="90" Binding="{Binding Volume, StringFormat={}{0} кг}"/>
+                                    <DataGridTextColumn Header="Сумма" Width="110" Binding="{Binding Amount, StringFormat={}{0:N0} руб.}"/>
+                                    <DataGridTextColumn Header="Тип" Width="90" Binding="{Binding Type}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Эффективность сотрудников -->
+                    <Border Grid.Row="1" Style="{StaticResource KpiCardStyle}" Margin="0,0,0,16">
+                        <StackPanel>
+                            <TextBlock Text="👥 Эффективность сотрудников" Style="{StaticResource DashboardHeader}"/>
+                            <DataGrid x:Name="dgEmployeePerformance"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      HeadersVisibility="Column"
+                                      RowHeight="36"
+                                      MaxHeight="220">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Сотрудник" Width="170" Binding="{Binding Name}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                                    <DataGridTextColumn Header="Должность" Width="140" Binding="{Binding Position}"/>
+                                    <DataGridTextColumn Header="Заявок" Width="80" Binding="{Binding Applications}"/>
+                                    <DataGridTextColumn Header="Эффективность" Width="110">
+                                        <DataGridTextColumn.CellStyle>
+                                            <Style TargetType="DataGridCell">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="FontWeight" Value="Medium"/>
+                                            </Style>
+                                        </DataGridTextColumn.CellStyle>
+                                        <DataGridTextColumn.Binding>
+                                            <Binding Path="Efficiency" StringFormat="{}{0}%"/>
+                                        </DataGridTextColumn.Binding>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Прогноз и рекомендации -->
+                    <Border Grid.Row="2" Style="{StaticResource KpiCardStyle}">
+                        <StackPanel>
+                            <TextBlock Text="💡 Прогноз и рекомендации" Style="{StaticResource DashboardHeader}"/>
+                            <StackPanel Margin="0,0,0,16">
+                                <TextBlock Text="📈 Прогноз на следующий месяц:" FontWeight="Medium" Foreground="#2D3748"/>
+                                <TextBlock Text="• Рост объёма на 10–15%" Margin="20,6,0,0" Foreground="#4A5568"/>
+                                <TextBlock Text="• Увеличение выручки на 8–12%" Margin="20,4,0,0" Foreground="#4A5568"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,16">
+                                <TextBlock Text="🚀 Рекомендации:" FontWeight="Medium" Foreground="#2D3748"/>
+                                <TextBlock Text="• Увеличить закупочные цены на картон на 5%" Margin="20,6,0,0" Foreground="#4A5568"/>
+                                <TextBlock Text="• Расширить рекламу в бизнес-центрах" Margin="20,4,0,0" Foreground="#4A5568"/>
+                                <TextBlock Text="• Оптимизировать маршруты вывоза" Margin="20,4,0,0" Foreground="#4A5568"/>
+                            </StackPanel>
+                            <Button Content="📥 Скачать полный отчёт"
+                                    Width="200" Height="36"
+                                    Background="#2B6CB0" Foreground="White"
+                                    HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

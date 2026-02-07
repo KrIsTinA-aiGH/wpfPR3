@@ -1,0 +1,150 @@
+﻿<Window x:Class="EcoBumagaApp.ApplicationEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Новая заявка"
+        Height="620"
+        Width="520"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8F9FA"
+        ResizeMode="CanMinimize">
+
+    <Window.Resources>
+        <!-- Стиль для обязательных меток -->
+        <Style x:Key="RequiredLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="#2D3748"/>
+            <Setter Property="Margin" Value="0,12,0,4"/>
+        </Style>
+
+        <!-- Стиль для обычных меток -->
+        <Style x:Key="LabelStyle" TargetType="TextBlock" BasedOn="{StaticResource RequiredLabelStyle}">
+            <Setter Property="Foreground" Value="#4A5568"/>
+        </Style>
+
+        <!-- Стиль для полей ввода -->
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="BorderBrush" Value="#CBD5E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="BorderBrush" Value="#CBD5E0"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <!-- Стиль кнопок -->
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="Width" Value="110"/>
+            <Setter Property="Margin" Value="8,0,0,0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" 
+                Background="#FFFFFF"
+                BorderBrush="#E2E8F0"
+                BorderThickness="1"
+                CornerRadius="6"
+                Padding="16"
+                Margin="0,0,0,16">
+            <TextBlock Text="Новая заявка"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="#1F2A38"/>
+        </Border>
+
+        <!-- Форма -->
+        <ScrollViewer Grid.Row="1" 
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel>
+                <TextBlock Text="Клиент:*" 
+                           Style="{StaticResource RequiredLabelStyle}"/>
+                <ComboBox x:Name="cbClient" 
+                          DisplayMemberPath="Login"
+                          Margin="0,0,0,12"/>
+
+                <TextBlock Text="Способ подачи:*" 
+                           Style="{StaticResource RequiredLabelStyle}"/>
+                <ComboBox x:Name="cbSourceType" 
+                          DisplayMemberPath="SourceTypeName"
+                          Margin="0,0,0,12"/>
+
+                <TextBlock Text="Адрес / местонахождение:*" 
+                           Style="{StaticResource RequiredLabelStyle}"/>
+                <TextBox x:Name="txtSourceAddress"
+                         Margin="0,0,0,12"/>
+
+                <TextBlock Text="Пункт приёма:" 
+                           Style="{StaticResource LabelStyle}"/>
+                <ComboBox x:Name="cbReceptionPoint" 
+                          DisplayMemberPath="Address"
+                          Margin="0,0,0,12"/>
+
+                <TextBlock Text="Примерный вес (кг):" 
+                           Style="{StaticResource LabelStyle}"/>
+                <TextBox x:Name="txtEstimatedWeight"
+                         Margin="0,0,0,12"/>
+
+                <TextBlock Text="Единица измерения:" 
+                           Style="{StaticResource LabelStyle}"/>
+                <ComboBox x:Name="cbUnit" 
+                          DisplayMemberPath="UnitName"
+                          Margin="0,0,0,12"/>
+
+                <TextBlock Text="Статус:*" 
+                           Style="{StaticResource RequiredLabelStyle}"/>
+                <ComboBox x:Name="cbStatus" 
+                          DisplayMemberPath="StatusName"
+                          Margin="0,0,0,12"/>
+
+                <TextBlock Text="Начисляемые бонусы:" 
+                           Style="{StaticResource LabelStyle}"/>
+                <TextBox x:Name="txtBonuses" 
+                         Text="0"
+                         Margin="0,0,0,16"/>
+
+                <TextBlock x:Name="txtError" 
+                           Foreground="#9B2C2C"
+                           FontWeight="Medium"
+                           Margin="0,8,0,16"
+                           TextWrapping="Wrap"
+                           Visibility="Collapsed"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    Margin="0,12,0,0">
+            <Button x:Name="btnSave" 
+                    Content="Сохранить"
+                    Background="#2B6CB0"
+                    Foreground="White"
+                    Click="BtnSave_Click"/>
+            <Button x:Name="btnCancel" 
+                    Content="Отмена"
+                    Background="#718096"
+                    Foreground="White"
+                    Click="BtnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

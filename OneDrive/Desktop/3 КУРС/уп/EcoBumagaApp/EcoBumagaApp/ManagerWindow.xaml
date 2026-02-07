@@ -1,0 +1,540 @@
+﻿<Window x:Class="EcoBumagaApp.ManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Панель менеджера по работе с клиентами"
+        Height="820"
+        Width="1220"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8F9FA">
+
+    <Window.Resources>
+        <!-- Единый стиль заголовков таблиц -->
+        <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1F2A38"/>
+            <Setter Property="Foreground" Value="#F7FAFC"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,8"/>
+        </Style>
+
+        <!-- Стиль карточек / блоков -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#000000" Direction="320" ShadowDepth="1" BlurRadius="4" Opacity="0.08"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль статус-карточек в аналитике -->
+        <Style x:Key="StatCardStyle" TargetType="Border">
+            <Setter Property="Width" Value="230"/>
+            <Setter Property="Height" Value="120"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="12"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="#1F2A38">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Лого и название -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <TextBlock Text="👔" FontSize="28" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBlock Text="МЕНЕДЖЕР ПО РАБОТЕ С КЛИЕНТАМИ"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Информация о менеджере -->
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+                    <TextBlock x:Name="txtManagerName" Text=""
+                               Foreground="White"
+                               FontSize="16"
+                               HorizontalAlignment="Right"/>
+                    <TextBlock Text="Работа с организациями и корпоративными клиентами"
+                               Foreground="#CBD5E0"
+                               FontSize="11"
+                               HorizontalAlignment="Right"/>
+                </StackPanel>
+
+                <!-- Кнопки -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Content="📊 Отчёт" Width="90" Height="36" Margin="5"
+                            Background="#2B6CB0" Foreground="White"/>
+                    <Button Content="📞 Звонки" Width="100" Height="36" Margin="5"
+                            Background="#2F855A" Foreground="White"/>
+                    <Button x:Name="btnLogout" Content="Выйти" Width="80" Height="36" Margin="5"
+                            Background="#2D3748" Foreground="White" Click="BtnLogout_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент -->
+        <TabControl Grid.Row="1" Margin="15" Background="White" BorderBrush="#CBD5E0" BorderThickness="1">
+
+            <!-- Вкладка 1: Картотека клиентов -->
+            <TabItem Header="📇 Картотека клиентов">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Панель управления -->
+                    <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Кнопки действий -->
+                            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                <Button Content="➕ Новый клиент" Width="130" Height="38" Margin="4"
+                                        Background="#2B6CB0" Foreground="White"/>
+                                <Button Content="✏️ Редактировать" Width="130" Height="38" Margin="4"
+                                        Background="#4A5568" Foreground="White"/>
+                                <Button Content="📄 История" Width="130" Height="38" Margin="4"
+                                        Background="#718096" Foreground="White"/>
+                                <Button Content="🤝 Встреча" Width="130" Height="38" Margin="4"
+                                        Background="#4A5568" Foreground="White"/>
+                            </StackPanel>
+
+                            <!-- Поиск и фильтры -->
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <ComboBox Width="160" Height="38" Margin="4" SelectedIndex="0">
+                                    <ComboBoxItem Content="Все типы"/>
+                                    <ComboBoxItem Content="Организации"/>
+                                    <ComboBoxItem Content="Физические лица"/>
+                                </ComboBox>
+                                <TextBox Width="280" Height="38" Margin="4" Padding="12,8"
+                                         Text="Поиск по названию, ФИО или телефону..."/>
+                                <Button Content="Найти" Width="90" Height="38" Margin="4"
+                                        Background="#2D3748" Foreground="White"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- Таблица клиентов -->
+                    <DataGrid Grid.Row="1"
+                              x:Name="dgClients"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              SelectionMode="Single"
+                              HeadersVisibility="Column"
+                              RowHeight="42"
+                              Margin="8">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding UserId}" Width="70" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Клиент" Width="280">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                                        <Binding Path="LastName"/>
+                                        <Binding Path="FirstName"/>
+                                        <Binding Path="Patronymic"/>
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Организация" Binding="{Binding OrganizationName}" Width="220"/>
+                            <DataGridTextColumn Header="Контакты" Width="200">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding StringFormat="{}{0} / {1}">
+                                        <Binding Path="PhoneNumber"/>
+                                        <Binding Path="Email"/>
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Тип" Binding="{Binding ClientType}" Width="110">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Бонусы" Binding="{Binding BonusBalance, StringFormat=N2}" Width="110">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Заявок" Binding="{Binding ApplicationsCount}" Width="90" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Статус" Width="130">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Status"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Действия" Width="160">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Content="📞" Width="34" Height="34" Margin="3" ToolTip="Позвонить"/>
+                                            <Button Content="✉️" Width="34" Height="34" Margin="3" ToolTip="Написать"/>
+                                            <Button Content="📋" Width="34" Height="34" Margin="3" ToolTip="Создать заявку"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка 2: Договоры и соглашения -->
+            <TabItem Header="📑 Договоры">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Панель управления -->
+                    <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                        <WrapPanel Orientation="Horizontal">
+                            <Button Content="📄 Новый договор" Width="150" Height="38" Margin="4"
+                Background="#2B6CB0" Foreground="White"/>
+                            <Button Content="🔄 Продлить" Width="130" Height="38" Margin="4"
+                Background="#2F855A" Foreground="White"/>
+                            <Button Content="📊 Архив" Width="130" Height="38" Margin="4"
+                Background="#718096" Foreground="White"/>
+                            <Button Content="📧 Отправить" Width="130" Height="38" Margin="4"
+                Background="#4A5568" Foreground="White"/>
+                            <Button Content="🖨️ Печать" Width="130" Height="38" Margin="4"
+                Background="#2D3748" Foreground="White"/>
+                            <ComboBox Width="170" Height="38" Margin="4" SelectedIndex="0">
+                                <ComboBoxItem Content="Все договоры"/>
+                                <ComboBoxItem Content="Действующие"/>
+                                <ComboBoxItem Content="Заканчиваются"/>
+                                <ComboBoxItem Content="Архивные"/>
+                            </ComboBox>
+                        </WrapPanel>
+                    </Border>
+
+                    <!-- Таблица договоров -->
+                    <DataGrid Grid.Row="1" Margin="8"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              HeadersVisibility="Column"
+                              RowHeight="42">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№ договора" Binding="{Binding ContractNumber}" Width="130" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Клиент" Binding="{Binding ClientName}" Width="260"/>
+                            <DataGridTextColumn Header="Дата начала" Binding="{Binding StartDate, StringFormat=dd.MM.yyyy}" Width="110" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Дата окончания" Binding="{Binding EndDate, StringFormat=dd.MM.yyyy}" Width="110" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Статус" Width="130">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Status"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Объём, кг/мес" Binding="{Binding MonthlyVolume, StringFormat=N0}" Width="110" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Менеджер" Binding="{Binding ManagerName}" Width="160"/>
+                            <DataGridTemplateColumn Header="Документы" Width="130">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Content="📄" Width="34" Height="34" Margin="3" ToolTip="Просмотр"/>
+                                            <Button Content="📥" Width="34" Height="34" Margin="3" ToolTip="Скачать"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка 3: Заявки от клиентов -->
+            <TabItem Header="📋 Заявки клиентов">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Панель управления -->
+                    <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="➕ Новая заявка" Width="150" Height="38" Margin="4"
+                                    Background="#2B6CB0" Foreground="White"/>
+                            <Button Content="👁️ Просмотр" Width="130" Height="38" Margin="4"
+                                    Background="#4A5568" Foreground="White"/>
+                            <Button Content="🔄 Изменить статус" Width="150" Height="38" Margin="4"
+                                    Background="#718096" Foreground="White"/>
+                            <ComboBox Width="170" Height="38" Margin="4" SelectedIndex="0">
+                                <ComboBoxItem Content="Все заявки"/>
+                                <ComboBoxItem Content="Новые"/>
+                                <ComboBoxItem Content="В работе"/>
+                                <ComboBoxItem Content="Завершённые"/>
+                            </ComboBox>
+                            <DatePicker Width="160" Height="38" Margin="4"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Таблица заявок -->
+                    <DataGrid Grid.Row="1" Margin="8"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              HeadersVisibility="Column"
+                              RowHeight="42">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№" Binding="{Binding ApplicationId}" Width="70" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Клиент" Binding="{Binding ClientName}" Width="220"/>
+                            <DataGridTextColumn Header="Адрес вывоза" Binding="{Binding SourceAddress}" Width="280"/>
+                            <DataGridTextColumn Header="Тип сырья" Binding="{Binding WasteType}" Width="130" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Вес, кг" Binding="{Binding EstimatedWeight, StringFormat=N1}" Width="90" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Статус" Width="140">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Status"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Дата создания" Binding="{Binding CreatedDate, StringFormat=dd.MM.yyyy}" Width="110" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Бонусы" Binding="{Binding BonusesAwarded, StringFormat=N2}" Width="90" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTemplateColumn Header="Действия" Width="110">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="📋 Детали" Width="90" Height="34" HorizontalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка 4: История и аналитика -->
+            <TabItem Header="📊 Аналитика работы">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Заголовок -->
+                        <TextBlock Grid.Row="0" Text="Аналитика работы с клиентами"
+                                   FontSize="20" FontWeight="SemiBold" Foreground="#1F2A38" Margin="0,0,0,16"/>
+
+                        <!-- Карточки статистики -->
+                        <WrapPanel Grid.Row="1" Margin="0,0,0,24" Orientation="Horizontal">
+                            <Border Style="{StaticResource StatCardStyle}" Background="#2B6CB0">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="КЛИЕНТОВ" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                    <TextBlock Text="156" Foreground="White" FontSize="32" FontWeight="Medium"/>
+                                    <TextBlock Text="в базе" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource StatCardStyle}" Background="#2F855A">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="ДОГОВОРОВ" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                    <TextBlock Text="42" Foreground="White" FontSize="32" FontWeight="Medium"/>
+                                    <TextBlock Text="активных" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource StatCardStyle}" Background="#4A5568">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="ЗАЯВОК" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                    <TextBlock Text="1 245" Foreground="White" FontSize="32" FontWeight="Medium"/>
+                                    <TextBlock Text="за месяц" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource StatCardStyle}" Background="#718096">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="БОНУСОВ" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                    <TextBlock Text="15 250" Foreground="White" FontSize="32" FontWeight="Medium"/>
+                                    <TextBlock Text="начислено" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                </StackPanel>
+                            </Border>
+                        </WrapPanel>
+
+                        <!-- Графики и топ-клиенты -->
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Активность клиентов -->
+                            <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,12,0">
+                                <StackPanel>
+                                    <TextBlock Text="📈 Активность клиентов" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                                    <StackPanel Margin="0,0,0,16">
+                                        <TextBlock Text="• Новые клиенты по месяцам" FontWeight="Medium" Margin="0,0,0,8"/>
+                                        <TextBlock Text="  └ Январь: 15 организаций" Foreground="#718096" Margin="20,0,0,4"/>
+                                        <TextBlock Text="  └ Февраль: 22 организации" Foreground="#718096" Margin="20,0,0,4"/>
+                                        <TextBlock Text="  └ Март: 18 организаций" Foreground="#718096" Margin="20,0,0,4"/>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Text="• Объёмы сдачи по типам клиентов" FontWeight="Medium" Margin="0,0,0,8"/>
+                                        <TextBlock Text="  └ Организации: 85%" Foreground="#718096" Margin="20,0,0,4"/>
+                                        <TextBlock Text="  └ Физ. лица: 15%" Foreground="#718096" Margin="20,0,0,4"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Топ-клиенты -->
+                            <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="🏆 Топ-клиенты" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                                    <StackPanel>
+                                        <Border Padding="12" Background="#F7FAFC" CornerRadius="5" Margin="0,0,0,8">
+                                            <Grid>
+                                                <TextBlock Text="1. ООО 'СтройГарант'" FontWeight="Medium"/>
+                                                <TextBlock Text="2 450 кг" HorizontalAlignment="Right" Foreground="#2F855A"/>
+                                            </Grid>
+                                        </Border>
+                                        <Border Padding="12" Background="#F7FAFC" CornerRadius="5" Margin="0,0,0,8">
+                                            <Grid>
+                                                <TextBlock Text="2. ООО 'Ромашка'" FontWeight="Medium"/>
+                                                <TextBlock Text="1 850 кг" HorizontalAlignment="Right" Foreground="#2F855A"/>
+                                            </Grid>
+                                        </Border>
+                                        <Border Padding="12" Background="#F7FAFC" CornerRadius="5">
+                                            <Grid>
+                                                <TextBlock Text="3. ИП Сидоров А.П." FontWeight="Medium"/>
+                                                <TextBlock Text="980 кг" HorizontalAlignment="Right" Foreground="#2F855A"/>
+                                            </Grid>
+                                        </Border>
+                                    </StackPanel>
+                                    <Button Content="📥 Экспорт отчёта" Width="160" Height="38" Margin="0,20,0,0"
+                                            Background="#2B6CB0" Foreground="White" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Вкладка 5: Планирование встреч -->
+            <TabItem Header="📅 Встречи и задачи">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Панель управления -->
+                    <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="➕ Новая встреча" Width="150" Height="38" Margin="4"
+                                    Background="#2B6CB0" Foreground="White"/>
+                            <Button Content="📝 Задача" Width="130" Height="38" Margin="4"
+                                    Background="#4A5568" Foreground="White"/>
+                            <ComboBox Width="190" Height="38" Margin="4" SelectedIndex="0">
+                                <ComboBoxItem Content="Предстоящие встречи"/>
+                                <ComboBoxItem Content="Прошедшие встречи"/>
+                                <ComboBoxItem Content="Все задачи"/>
+                            </ComboBox>
+                            <DatePicker Width="170" Height="38" Margin="4"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Список встреч и задач -->
+                    <ListBox Grid.Row="1" Margin="8" Background="Transparent">
+                        <ListBoxItem>
+                            <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="👥" FontSize="26" VerticalAlignment="Center" Margin="0,0,16,0"/>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="Встреча с ООО 'ЭкоТех'" FontWeight="Medium" FontSize="15"/>
+                                        <TextBlock Text="Обсуждение договора на регулярный вывоз" Foreground="#718096" Margin="0,6,0,0"/>
+                                        <TextBlock Text="📍 ул. Промышленная, 15, офис 304" Foreground="#2B6CB0" FontSize="13"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2" HorizontalAlignment="Right">
+                                        <TextBlock Text="12.03.2026 14:00" FontWeight="Medium" Foreground="#2D3748"/>
+                                        <TextBlock Text="Завтра" Foreground="#2F855A" FontSize="13" HorizontalAlignment="Right"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </ListBoxItem>
+
+                        <ListBoxItem>
+                            <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="📞" FontSize="26" VerticalAlignment="Center" Margin="0,0,16,0"/>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="Звонок клиенту ООО 'СтройГарант'" FontWeight="Medium" FontSize="15"/>
+                                        <TextBlock Text="Уточнение условий продления договора" Foreground="#718096" Margin="0,6,0,0"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2" HorizontalAlignment="Right">
+                                        <TextBlock Text="15.03.2026 11:00" FontWeight="Medium" Foreground="#2D3748"/>
+                                        <TextBlock Text="Высокий приоритет" Foreground="#9B2C2C" FontSize="13" HorizontalAlignment="Right"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!-- Подвал -->
+        <Border Grid.Row="2" Background="#EDF2F7">
+            <Grid>
+                <TextBlock Text="Менеджер по работе с клиентами • ООО «ЭкоБумага»"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="#4A5568"
+                           FontSize="12"/>
+                <TextBlock x:Name="txtVersion" Text=""
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Margin="0,0,15,0"
+                           Foreground="#718096"
+                           FontSize="11"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,422 @@
+﻿<Window x:Class="EcoBumagaApp.StorekeeperWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Складское хозяйство"
+        Height="880"
+        Width="1320"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8F9FA">
+
+    <Window.Resources>
+        <!-- Стиль карточек -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#D1D9E0"/>
+            <Setter Property="Margin" Value="12"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#000000"
+                                      Direction="315"
+                                      ShadowDepth="2"
+                                      BlurRadius="12"
+                                      Opacity="0.18"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль кнопок полок/стеллажей -->
+        <Style x:Key="ShelfButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#F7FAFC"/>
+            <Setter Property="BorderBrush" Value="#CBD5E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="MinWidth" Value="80"/>
+        </Style>
+
+        <!-- Стиль бейджа паллеты -->
+        <Style x:Key="PalletBadgeStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="MinWidth" Value="100"/>
+        </Style>
+
+        <!-- Стиль заголовков таблиц -->
+        <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1F2A38"/>
+            <Setter Property="Foreground" Value="#F7FAFC"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,8"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="#1F2A38">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Логотип и название -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <TextBlock Text="🏭" FontSize="28" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <StackPanel>
+                        <TextBlock Text="СКЛАДСКОЕ ХОЗЯЙСТВО"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+                        <TextBlock Text="Управление хранением и движением сырья"
+                                   FontSize="11"
+                                   Foreground="#CBD5E0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Информация о кладовщике -->
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+                    <TextBlock x:Name="txtStorekeeperName" Text=""
+                               Foreground="White"
+                               FontSize="16"
+                               HorizontalAlignment="Right"/>
+                    <TextBlock Text="Склад №1 • Сектор хранения"
+                               Foreground="#CBD5E0"
+                               FontSize="11"
+                               HorizontalAlignment="Right"/>
+                </StackPanel>
+
+                <!-- Кнопки -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Content="📋 Инвентаризация" Width="160" Height="36" Margin="5"
+                            Background="#2B6CB0" Foreground="White"/>
+                    <Button Content="📈 Оборачиваемость" Width="160" Height="36" Margin="5"
+                            Background="#2F855A" Foreground="White"/>
+                    <Button x:Name="btnLogout" Content="Выйти" Width="80" Height="36" Margin="5"
+                            Background="#2D3748" Foreground="White" Click="BtnLogout_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент -->
+        <Grid Grid.Row="1" Margin="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Левая часть - прессование и маркировка -->
+            <Grid Grid.Column="0" Margin="0,0,12,-27">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Паллеты для прессования -->
+                <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="📦 Паллеты готовые к прессованию" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                        <WrapPanel>
+                            <!-- Паллета 1 -->
+                            <Border Width="260" Height="136" Style="{StaticResource CardStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="0" Background="#2B6CB0" Padding="12" CornerRadius="6,6,0,0">
+                                        <Grid>
+                                            <TextBlock Text="Паллета #1" Foreground="White" FontWeight="Medium"/>
+                                            <CheckBox HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Border>
+                                    <StackPanel Grid.Row="1" Margin="12">
+                                        <TextBlock Text="📄 Офисная бумага" FontWeight="Medium"/>
+                                        <TextBlock Text="Категория A • 245 кг" Foreground="#718096" FontSize="13"/>
+                                        <TextBlock Text="Маркировка: S-2026-02-07-001" Foreground="#2B6CB0" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <!-- Паллета 2 -->
+                            <Border Width="260" Height="136" Style="{StaticResource CardStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="0" Background="#2F855A" Padding="12" CornerRadius="6,6,0,0">
+                                        <Grid>
+                                            <TextBlock Text="Паллета #2" Foreground="White" FontWeight="Medium"/>
+                                            <CheckBox HorizontalAlignment="Right" VerticalAlignment="Center" IsChecked="True"/>
+                                        </Grid>
+                                    </Border>
+                                    <StackPanel Grid.Row="1" Margin="12">
+                                        <TextBlock Text="📦 Картон" FontWeight="Medium"/>
+                                        <TextBlock Text="Категория B • 180 кг" Foreground="#718096" FontSize="13"/>
+                                        <TextBlock Text="Маркировка: S-2026-02-07-002" Foreground="#2F855A" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <!-- Паллета 3 -->
+                            <Border Width="260" Height="136" Style="{StaticResource CardStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border Grid.Row="0" Background="#4A5568" Padding="12" CornerRadius="6,6,0,0">
+                                        <Grid>
+                                            <TextBlock Text="Паллета #3" Foreground="White" FontWeight="Medium"/>
+                                            <CheckBox HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Border>
+                                    <StackPanel Grid.Row="1" Margin="12">
+                                        <TextBlock Text="📰 Газетная бумага" FontWeight="Medium"/>
+                                        <TextBlock Text="Категория C • 95 кг" Foreground="#718096" FontSize="13"/>
+                                        <TextBlock Text="Маркировка: S-2026-02-07-003" Foreground="#4A5568" FontSize="12"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </WrapPanel>
+
+                        <Button Content="🔄 Выбрать все" Width="130" Height="38" Margin="0,16,0,0" HorizontalAlignment="Right"
+                                Background="#4A5568" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Форма прессования и маркировки -->
+                <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="🏭 Прессование и маркировка кип"
+                                   FontSize="17" FontWeight="SemiBold" Margin="0,0,0,16"/>
+
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Параметры прессования -->
+                            <StackPanel Grid.Row="0" Margin="0,0,0,20">
+                                <TextBlock Text="Параметры прессования:" FontWeight="Medium" Foreground="#4A5568" Margin="0,0,0,10"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="Давление (тонн):" FontSize="13" Foreground="#4A5568"/>
+                                        <TextBox Text="12.5" Height="36" Padding="10" Margin="0,6,0,0"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Margin="16,0,0,0">
+                                        <TextBlock Text="Время прессования:" FontSize="13" Foreground="#4A5568"/>
+                                        <TextBox Text="45" Height="36" Padding="10" Margin="0,6,0,0"/>
+                                        <TextBlock Text="секунд" FontSize="11" Foreground="#718096"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2" Margin="16,0,0,0">
+                                        <TextBlock Text="Температура:" FontSize="13" Foreground="#4A5568"/>
+                                        <TextBox Text="75" Height="36" Padding="10" Margin="0,6,0,0"/>
+                                        <TextBlock Text="°C" FontSize="11" Foreground="#718096"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+
+                            <!-- Маркировка кипы -->
+                            <StackPanel Grid.Row="1" Margin="0,0,0,20">
+                                <TextBlock Text="Маркировка кипы:" FontWeight="Medium" Foreground="#4A5568" Margin="0,0,0,10" Height="15"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="Складской номер:" FontSize="13" Foreground="#4A5568"/>
+                                        <TextBox x:Name="txtStorageNumber" Text="K-2026-02-07-001" Height="36" Padding="10" Margin="0,6,0,0"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Margin="16,0,0,0">
+                                        <TextBlock Text="Вес кипы (кг):" FontSize="13" Foreground="#4A5568"/>
+                                        <TextBox x:Name="txtBaleWeight" Text="245" Height="36" Padding="10" Margin="0,6,0,0"/>
+                                    </StackPanel>
+                                    <Button Grid.Column="2" Content="🎯 Сгенерировать"
+                                            Width="140" Height="38" Margin="20,20,0,0"
+                                            Background="#2B6CB0" Foreground="White"/>
+                                </Grid>
+                            </StackPanel>
+
+                            <!-- Информация для этикетки -->
+                            <StackPanel Grid.Row="2" Margin="0,0,0,20">
+                                <TextBlock Text="Информация для этикетки:" FontWeight="Medium" Foreground="#4A5568" Margin="0,0,0,10"/>
+                                <Border Padding="16" Background="#F7FAFC" CornerRadius="6">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock Text="Тип: Офисная бумага" FontWeight="Medium"/>
+                                            <TextBlock Text="Категория: A" FontWeight="Medium" Margin="0,6,0,0"/>
+                                            <TextBlock Text="Вес: 245 кг" FontWeight="Medium" Margin="0,6,0,0"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Text="Дата прессования: 15.03.2026" FontWeight="Medium"/>
+                                            <TextBlock Text="Кладовщик: Иванов И.И." FontWeight="Medium" Margin="0,6,0,0"/>
+                                            <TextBlock Text="Номер кипы: K-2026-02-07-001" FontWeight="Medium" Margin="0,6,0,0"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Кнопки действий -->
+                            <StackPanel Grid.Row="3" Orientation="Horizontal">
+                                <Button Content="🖨️ Печать этикетки"
+                                        Width="160" Height="42" Margin="0,0,12,0"
+                                        Background="#2B6CB0" Foreground="White"/>
+                                <Button Content="✅ Завершить кипу"
+                                        Width="170" Height="42"
+                                        Background="#2F855A" Foreground="White"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!-- Правая часть - карта склада и инвентаризация -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Карта склада -->
+                <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                    <StackPanel>
+                        <TextBlock Text="🗺️ Карта складирования" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,12"/>
+
+                        <!-- Легенда -->
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Легенда:" FontWeight="Medium" Margin="0,0,0,8"/>
+                            <WrapPanel>
+                                <Border Style="{StaticResource PalletBadgeStyle}" Background="#2B6CB0" Margin="0,0,6,6">
+                                    <TextBlock Text="Офисная" Foreground="White" FontSize="11"/>
+                                </Border>
+                                <Border Style="{StaticResource PalletBadgeStyle}" Background="#2F855A" Margin="0,0,6,6">
+                                    <TextBlock Text="Картон" Foreground="White" FontSize="11"/>
+                                </Border>
+                                <Border Style="{StaticResource PalletBadgeStyle}" Background="#4A5568" Margin="0,0,6,6">
+                                    <TextBlock Text="Газетная" Foreground="White" FontSize="11"/>
+                                </Border>
+                                <Border Style="{StaticResource PalletBadgeStyle}" Background="#718096" Margin="0,0,6,6">
+                                    <TextBlock Text="Журналы" Foreground="White" FontSize="11"/>
+                                </Border>
+                                <Border Style="{StaticResource PalletBadgeStyle}" Background="#9B2C2C" Margin="0,0,6,6">
+                                    <TextBlock Text="Архивная" Foreground="White" FontSize="11"/>
+                                </Border>
+                            </WrapPanel>
+                        </StackPanel>
+
+                        <!-- Стеллажи -->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Стеллаж А -->
+                            <StackPanel Grid.Row="0" Margin="0,0,0,12">
+                                <TextBlock Text="Стеллаж А:" FontWeight="Medium" Margin="0,0,0,8"/>
+                                <WrapPanel>
+                                    <Button Content="A-01" Style="{StaticResource ShelfButtonStyle}" BorderBrush="#2B6CB0" Foreground="#2B6CB0"/>
+                                    <Button Content="A-02" Style="{StaticResource ShelfButtonStyle}" BorderBrush="#2B6CB0" Foreground="#2B6CB0"/>
+                                    <Button Content="A-03" Style="{StaticResource ShelfButtonStyle}" BorderBrush="#2F855A" Foreground="#2F855A"/>
+                                    <Button Content="A-04" Style="{StaticResource ShelfButtonStyle}" BorderBrush="#2F855A" Foreground="#2F855A"/>
+                                    <Button Content="A-05" Style="{StaticResource ShelfButtonStyle}" BorderBrush="#4A5568" Foreground="#4A5568"/>
+                                </WrapPanel>
+                            </StackPanel>
+
+
+                        </Grid>
+
+                        <Button Content="📍 Разместить новую кипу"
+                                Width="220" Height="42" Margin="0,16,0,0"
+                                Background="#2B6CB0" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Инвентаризация -->
+                <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="📋 Инвентаризация" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Проводится:" FontSize="13" Foreground="#718096"/>
+                            <TextBlock Text="15.03.2026 • Смена дневная" FontWeight="Medium"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Остатки по системе:" FontSize="13" Foreground="#718096"/>
+                            <TextBlock Text="8 450 кг" FontSize="22" FontWeight="Medium" Foreground="#2B6CB0"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="Фактические остатки:" FontSize="13" Foreground="#718096"/>
+                            <TextBox x:Name="txtActualStock" Text="8 425" Height="40" Padding="10" FontSize="14"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="Расхождение:" FontSize="13" Foreground="#718096"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="-25 кг (-0.3%)" FontSize="16" FontWeight="Medium" Foreground="#9B2C2C"/>
+                                <Button Grid.Column="1" Content="📝 Зафиксировать"
+                                        Width="150" Height="38"
+                                        Background="#9B2C2C" Foreground="White"/>
+                            </Grid>
+                        </StackPanel>
+                        <Button Content="📊 Отчёт по движению"
+                                Width="220" Height="42" Margin="0,24,0,0"
+                                Background="#2F855A" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <!-- Подвал -->
+        <Border Grid.Row="1" Background="#EDF2F7" Padding="12" Margin="0,794,0,-69" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="📦 Остатки по типам" Width="160" Height="42" Margin="6"
+                        Background="#2B6CB0" Foreground="White"/>
+                <Button Content="📊 Оборачиваемость" Width="160" Height="42" Margin="6"
+                        Background="#2F855A" Foreground="White"/>
+                <Button Content="🚚 Готовые к отгрузке" Width="180" Height="42" Margin="6"
+                        Background="#4A5568" Foreground="White"/>
+                <Button Content="📋 Журнал движения" Width="160" Height="42" Margin="6"
+                        Background="#718096" Foreground="White"/>
+                <Button Content="🔄 Обновить данные" Width="160" Height="42" Margin="6"
+                        Background="#2D3748" Foreground="White"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

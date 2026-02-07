@@ -1,0 +1,352 @@
+﻿<Window x:Class="EcoBumagaApp.ClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Личный кабинет клиента"
+        Height="720"
+        Width="1020"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8F9FA">
+
+    <Window.Resources>
+        <!-- Единый стиль заголовков таблиц -->
+        <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1F2A38"/>
+            <Setter Property="Foreground" Value="#F7FAFC"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,8"/>
+        </Style>
+
+        <!-- Стиль карточек -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#000000" Direction="320" ShadowDepth="1" BlurRadius="4" Opacity="0.08"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Бейдж бонусов -->
+        <Style x:Key="BonusBadgeStyle" TargetType="Border">
+            <Setter Property="Background" Value="#2F855A"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="#1F2A38">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Логотип и название -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <TextBlock Text="👤" FontSize="28" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <StackPanel>
+                        <TextBlock Text="ЛИЧНЫЙ КАБИНЕТ"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+                        <TextBlock Text="Сдача макулатуры и отслеживание"
+                                   FontSize="11"
+                                   Foreground="#CBD5E0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Информация о клиенте -->
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+                    <TextBlock x:Name="txtClientName" Text=""
+                               Foreground="White"
+                               FontSize="16"
+                               HorizontalAlignment="Right"/>
+                    <TextBlock x:Name="txtClientType" Text="Физическое лицо"
+                               Foreground="#CBD5E0"
+                               FontSize="11"
+                               HorizontalAlignment="Right"/>
+                </StackPanel>
+
+                <!-- Кнопки -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Content="💰 Бонусы" Width="100" Height="35" Margin="5"
+                            Background="#2F855A" Foreground="White"/>
+                    <Button x:Name="btnLogout" Content="Выйти" Width="80" Height="35" Margin="5"
+                            Background="#2D3748" Foreground="White" Click="BtnLogout_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент -->
+        <TabControl Grid.Row="1" Margin="15" Background="White" BorderBrush="#CBD5E0" BorderThickness="1">
+
+            <!-- Вкладка 1: Мои заявки -->
+            <TabItem Header="📋 Мои заявки">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Панель управления -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,12">
+                        <Button Content="➕ Новая заявка" Width="140" Height="36" Margin="5"
+                                Background="#2F855A" Foreground="White"/>
+                        <Button Content="🔄 Обновить" Width="100" Height="36" Margin="5"
+                                Background="#2B6CB0" Foreground="White"/>
+                        <ComboBox Width="160" Height="36" Margin="5" SelectedIndex="0">
+                            <ComboBoxItem Content="Все статусы"/>
+                            <ComboBoxItem Content="Новая"/>
+                            <ComboBoxItem Content="В обработке"/>
+                            <ComboBoxItem Content="Выполнена"/>
+                            <ComboBoxItem Content="Отменена"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!-- Список заявок -->
+                    <DataGrid Grid.Row="1"
+                              x:Name="dgApplications"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              HeadersVisibility="Column"
+                              RowHeight="40"
+                              SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№" Width="60" Binding="{Binding ApplicationId}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Дата" Width="110" Binding="{Binding CreatedDate, StringFormat=dd.MM.yyyy}"/>
+                            <DataGridTextColumn Header="Тип" Width="130" Binding="{Binding SourceType.SourceTypeName}"/>
+                            <DataGridTextColumn Header="Адрес" Width="220" Binding="{Binding SourceAddress}"/>
+                            <DataGridTextColumn Header="Вес" Width="90" Binding="{Binding EstimatedWeight, StringFormat={}{0} кг}"/>
+                            <DataGridTextColumn Header="Статус" Width="130">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="FontWeight" Value="SemiBold"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Status.StatusName"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Бонусы" Width="100" Binding="{Binding BonusesAwarded, StringFormat={}{0} бон.}"/>
+                            <DataGridTemplateColumn Header="Действия" Width="130">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Content="👁️" Width="32" Height="32" Margin="3" ToolTip="Просмотр"/>
+                                            <Button Content="📄" Width="32" Height="32" Margin="3" ToolTip="Акт"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка 2: Бонусы и баланс -->
+            <TabItem Header="💰 Бонусы и баланс">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Баланс бонусов -->
+                    <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,20">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Ваш бонусный баланс:" FontSize="14" Foreground="#718096"/>
+                                <TextBlock x:Name="txtBonusBalance" Text="0 бонусов"
+                                           FontSize="32" FontWeight="Bold" Foreground="#2F855A" Margin="0,6,0,0"/>
+                                <TextBlock Text="1 бонус = 1 рубль" FontSize="12" Foreground="#718096"/>
+                            </StackPanel>
+                            <Border Grid.Column="1" Style="{StaticResource BonusBadgeStyle}">
+                                <TextBlock Text="🎯 Цель: 500 бонусов" Foreground="White" FontWeight="Medium"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <!-- История начислений -->
+                    <Border Grid.Row="1" Style="{StaticResource CardStyle}" Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="📊 История начислений бонусов" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                            <DataGrid x:Name="dgBonusHistory"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      HeadersVisibility="Column"
+                                      RowHeight="36"
+                                      MaxHeight="240">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Дата" Width="110" Binding="{Binding Date, StringFormat=dd.MM.yyyy}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                                    <DataGridTextColumn Header="Заявка" Width="90" Binding="{Binding ApplicationId}"/>
+                                    <DataGridTextColumn Header="Начислено" Width="110" Binding="{Binding Amount, StringFormat={}{0} бон.}"/>
+                                    <DataGridTextColumn Header="Основание" Width="200" Binding="{Binding Reason}"/>
+                                    <DataGridTextColumn Header="Баланс" Width="110" Binding="{Binding Balance, StringFormat={}{0} бон.}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Как получить бонусы -->
+                    <Border Grid.Row="2" Style="{StaticResource CardStyle}">
+                        <StackPanel>
+                            <TextBlock Text="🎁 Как получить бонусы?" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                            <StackPanel Margin="0,0,0,8">
+                                <TextBlock Text="• 10 бонусов за каждые 10 кг макулатуры" FontWeight="Medium"/>
+                                <TextBlock Text="• Дополнительные 50 бонусов за первую заявку" Foreground="#718096" Margin="20,4,0,0"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,8">
+                                <TextBlock Text="• +20% бонусов за сдачу офисной бумаги" FontWeight="Medium"/>
+                                <TextBlock Text="• Двойные бонусы в акционные дни" Foreground="#718096" Margin="20,4,0,0"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="• Бонусы можно потратить:" FontWeight="Medium"/>
+                                <TextBlock Text=" - Оплата следующих заявок" Foreground="#718096" Margin="20,4,0,0"/>
+                                <TextBlock Text=" - Подарочные сертификаты партнёров" Foreground="#718096" Margin="20,4,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка 3: Профиль -->
+            <TabItem Header="👤 Профиль">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Личная информация -->
+                    <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,20">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Левая часть -->
+                            <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                                <TextBlock Text="📝 Личная информация" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                                <TextBlock Text="ФИО:" Margin="0,0,0,4" Foreground="#4A5568"/>
+                                <TextBox x:Name="txtFullName" Height="34" Margin="0,0,0,12"/>
+                                <TextBlock Text="Телефон:" Margin="0,0,0,4" Foreground="#4A5568"/>
+                                <TextBox x:Name="txtPhone" Height="34" Margin="0,0,0,12"/>
+                                <TextBlock Text="Email:" Margin="0,0,0,4" Foreground="#4A5568"/>
+                                <TextBox x:Name="txtEmail" Height="34"/>
+                            </StackPanel>
+
+                            <!-- Правая часть -->
+                            <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                                <TextBlock Text="🏢 Данные организации (если есть)" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                                <TextBlock Text="Название организации:" Margin="0,0,0,4" Foreground="#4A5568"/>
+                                <TextBox x:Name="txtOrganization" Height="34" Margin="0,0,0,12"/>
+                                <TextBlock Text="ИНН:" Margin="0,0,0,4" Foreground="#4A5568"/>
+                                <TextBox x:Name="txtINN" Height="34" Margin="0,0,0,12"/>
+                                <Button Content="💾 Сохранить изменения" Width="180" Height="36"
+                                        Background="#2B6CB0" Foreground="White" Margin="0,20,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- Статистика -->
+                    <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+                        <StackPanel>
+                            <TextBlock Text="📊 Ваша статистика" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                                    <TextBlock Text="Всего сдано" FontSize="13" Foreground="#718096"/>
+                                    <TextBlock x:Name="txtTotalWeight" Text="0 кг" FontSize="26" FontWeight="Bold" Foreground="#2B6CB0" Margin="0,6,0,0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                                    <TextBlock Text="Выполнено заявок" FontSize="13" Foreground="#718096"/>
+                                    <TextBlock x:Name="txtTotalApplications" Text="0" FontSize="26" FontWeight="Bold" Foreground="#2F855A" Margin="0,6,0,0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                                    <TextBlock Text="Средний вес" FontSize="13" Foreground="#718096"/>
+                                    <TextBlock x:Name="txtAvgWeight" Text="0 кг" FontSize="26" FontWeight="Bold" Foreground="#4A5568" Margin="0,6,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка 4: Цены и сырьё -->
+            <TabItem Header="📈 Цены и сырьё">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Текущие цены -->
+                    <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,20">
+                        <StackPanel>
+                            <TextBlock Text="💰 Текущие закупочные цены" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                            <DataGrid x:Name="dgWasteTypes"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      HeadersVisibility="Column"
+                                      RowHeight="40"
+                                      MaxHeight="320">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Тип сырья" Width="220" Binding="{Binding TypeName}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                                    <DataGridTextColumn Header="Цена за кг" Width="130" Binding="{Binding BasePricePerKg, StringFormat={}{0:N2} руб.}"/>
+                                    <DataGridTextColumn Header="Категория А" Width="130" Binding="{Binding PriceA, StringFormat={}{0:N2} руб.}"/>
+                                    <DataGridTextColumn Header="Категория Б" Width="130" Binding="{Binding PriceB, StringFormat={}{0:N2} руб.}"/>
+                                    <DataGridTextColumn Header="Примечание" Width="220" Binding="{Binding Description}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Пункты приёма -->
+                    <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+                        <StackPanel>
+                            <TextBlock Text="📍 Пункты приёма" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                            <DataGrid x:Name="dgReceptionPoints"
+                                      AutoGenerateColumns="False"
+                                      IsReadOnly="True"
+                                      HeadersVisibility="Column"
+                                      RowHeight="40"
+                                      MaxHeight="220">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Адрес" Width="340" Binding="{Binding Address}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                                    <DataGridTextColumn Header="Телефон" Width="140" Binding="{Binding Phone}"/>
+                                    <DataGridTextColumn Header="Часы работы" Width="180" Binding="{Binding WorkingHours}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

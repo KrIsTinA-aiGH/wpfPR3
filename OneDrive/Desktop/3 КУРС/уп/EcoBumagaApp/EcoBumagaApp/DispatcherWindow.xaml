@@ -1,0 +1,409 @@
+﻿<Window x:Class="EcoBumagaApp.DispatcherWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Панель диспетчера"
+        Height="820"
+        Width="1220"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8F9FA">
+
+    <Window.Resources>
+        <!-- Единый стиль заголовков таблиц -->
+        <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1F2A38"/>
+            <Setter Property="Foreground" Value="#F7FAFC"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="10,8"/>
+        </Style>
+
+        <!-- Стиль карточек / блоков -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#000000" Direction="320" ShadowDepth="1" BlurRadius="4" Opacity="0.08"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль статус-блоков -->
+        <Style x:Key="StatusCardStyle" TargetType="Border">
+            <Setter Property="Width" Value="210"/>
+            <Setter Property="Height" Value="110"/>
+            <Setter Property="Margin" Value="8"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="12"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="#1F2A38">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Логотип и название -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <TextBlock Text="🚚" FontSize="28" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <StackPanel>
+                        <TextBlock Text="ДИСПЕТЧЕРСКАЯ СЛУЖБА"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="White"/>
+                        <TextBlock Text="Планирование маршрутов и логистика"
+                                   FontSize="11"
+                                   Foreground="#CBD5E0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Информация о диспетчере -->
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+                    <TextBlock x:Name="txtDispatcherName" Text=""
+                               Foreground="White"
+                               FontSize="16"
+                               HorizontalAlignment="Right"/>
+                    <TextBlock Text="Распределение заявок и контроль выполнения"
+                               Foreground="#CBD5E0"
+                               FontSize="11"
+                               HorizontalAlignment="Right"/>
+                </StackPanel>
+
+                <!-- Кнопки -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Content="🗺️ Карта" Width="100" Height="36" Margin="5"
+                            Background="#2B6CB0" Foreground="White"/>
+                    <Button Content="📋 Отчёт" Width="100" Height="36" Margin="5"
+                            Background="#2F855A" Foreground="White"/>
+                    <Button x:Name="btnLogout" Content="Выйти" Width="80" Height="36" Margin="5"
+                            Background="#2D3748" Foreground="White" Click="BtnLogout_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент -->
+        <TabControl Grid.Row="1" Margin="15" Background="White" BorderBrush="#CBD5E0" BorderThickness="1">
+
+            <!-- Вкладка 1: Планирование маршрутов -->
+            <TabItem Header="🗺️ Планирование маршрутов">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Левая часть - карта и управление -->
+                    <Grid Grid.Column="0" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Панель управления -->
+                        <Border Grid.Row="0" Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                            <WrapPanel Orientation="Horizontal">
+                                <!-- ← здесь WrapPanel вместо StackPanel -->
+                                <Button Content="🔄 Автопланирование" Width="160" Height="36" Margin="4"
+                Background="#2B6CB0" Foreground="White"/>
+                                <Button Content="✅ Утвердить маршруты" Width="160" Height="36" Margin="4"
+                Background="#2F855A" Foreground="White"/>
+                                <Button Content="📄 Путевые листы" Width="150" Height="36" Margin="4"
+                Background="#4A5568" Foreground="White"/>
+                                <Button Content="🚗 Назначить водителя" Width="170" Height="36" Margin="4"
+                Background="#4A5568" Foreground="White"/>
+                                <ComboBox Width="190" Height="36" Margin="4" SelectedIndex="0">
+                                    <ComboBoxItem Content="Все районы"/>
+                                    <ComboBoxItem Content="Центральный"/>
+                                    <ComboBoxItem Content="Северный"/>
+                                    <ComboBoxItem Content="Южный"/>
+                                    <ComboBoxItem Content="Западный"/>
+                                </ComboBox>
+                            </WrapPanel>
+                        </Border>
+
+                        <!-- Имитация карты -->
+                        <Border Grid.Row="1" Style="{StaticResource CardStyle}">
+                            <Grid>
+                                <TextBlock Text="🗺️ Карта маршрутов (интеграция с картой)"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="22"
+                                           Foreground="#718096"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"/>
+                                <Canvas Opacity="0.4">
+                                    <Ellipse Canvas.Left="120" Canvas.Top="140" Width="16" Height="16" Fill="#9B2C2C"/>
+                                    <Ellipse Canvas.Left="280" Canvas.Top="190" Width="16" Height="16" Fill="#2B6CB0"/>
+                                    <Ellipse Canvas.Left="420" Canvas.Top="110" Width="16" Height="16" Fill="#2F855A"/>
+                                    <Ellipse Canvas.Left="320" Canvas.Top="280" Width="16" Height="16" Fill="#4A5568"/>
+                                    <Line X1="136" Y1="148" X2="296" Y2="198" Stroke="#2B6CB0" StrokeThickness="2" StrokeDashArray="4 2"/>
+                                    <Line X1="296" Y1="198" X2="436" Y2="118" Stroke="#2F855A" StrokeThickness="2" StrokeDashArray="4 2"/>
+                                    <Line X1="436" Y1="118" X2="336" Y2="288" Stroke="#4A5568" StrokeThickness="2" StrokeDashArray="4 2"/>
+                                </Canvas>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <!-- Правая часть - заявки и водители -->
+                    <Grid Grid.Column="1" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Заявки на сегодня -->
+                        <Border Grid.Row="0" Background="#1F2A38" Padding="12" CornerRadius="6,6,0,0">
+                            <TextBlock Text="📋 Заявки на сегодня" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
+                        </Border>
+                        <DataGrid Grid.Row="1"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  HeadersVisibility="Column"
+                                  RowHeight="38"
+                                  BorderThickness="0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="#" Width="50" Binding="{Binding Id}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                                <DataGridTextColumn Header="Адрес" Width="200" Binding="{Binding Address}"/>
+                                <DataGridTextColumn Header="Вес" Width="70" Binding="{Binding Weight, StringFormat={}{0} кг}"/>
+                                <DataGridTextColumn Header="" Width="50">
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Text" Value="📍"/>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <!-- Водители и транспорт -->
+                        <Border Grid.Row="2" Background="#1F2A38" Padding="12" CornerRadius="6,6,0,0" Margin="0,16,0,0">
+                            <TextBlock Text="👥 Водители и транспорт" Foreground="White" FontWeight="SemiBold" FontSize="14"/>
+                        </Border>
+                        <ListBox Grid.Row="3" BorderThickness="0" Background="Transparent">
+                            <ListBoxItem>
+                                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,8">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="🚚" FontSize="22" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Text="Иванов А.В." FontWeight="Medium" FontSize="14"/>
+                                            <TextBlock Text="ГАЗель Next (А001АА777)" Foreground="#718096" FontSize="12"/>
+                                            <TextBlock Text="Загрузка: 850 / 1500 кг" Foreground="#2B6CB0" FontSize="12"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,8">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="🚛" FontSize="22" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Text="Петров С.М." FontWeight="Medium" FontSize="14"/>
+                                            <TextBlock Text="КАМАЗ 43118 (Е004ЕЕ777)" Foreground="#718096" FontSize="12"/>
+                                            <TextBlock Text="Загрузка: 4200 / 10000 кг" Foreground="#2F855A" FontSize="12"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </ListBoxItem>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка 2: Мониторинг выполнения -->
+            <TabItem Header="📊 Мониторинг выполнения">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Статусы рейсов -->
+                    <WrapPanel Grid.Row="0" Margin="10" Orientation="Horizontal">
+                        <Border Style="{StaticResource StatusCardStyle}" Background="#2B6CB0">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="ВЫПОЛНЯЕТСЯ" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                <TextBlock Text="3" Foreground="White" FontSize="34" FontWeight="Bold"/>
+                                <TextBlock Text="рейса" Foreground="White" FontSize="13" Opacity="0.95"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource StatusCardStyle}" Background="#2F855A">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="ЗАВЕРШЕНО" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                <TextBlock Text="8" Foreground="White" FontSize="34" FontWeight="Bold"/>
+                                <TextBlock Text="рейсов" Foreground="White" FontSize="13" Opacity="0.95"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource StatusCardStyle}" Background="#9B2C2C">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="ПРОБЛЕМЫ" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                <TextBlock Text="1" Foreground="White" FontSize="34" FontWeight="Bold"/>
+                                <TextBlock Text="рейс" Foreground="White" FontSize="13" Opacity="0.95"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource StatusCardStyle}" Background="#718096">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="ОЖИДАНИЕ" Foreground="White" FontSize="13" Opacity="0.95"/>
+                                <TextBlock Text="5" Foreground="White" FontSize="34" FontWeight="Bold"/>
+                                <TextBlock Text="рейсов" Foreground="White" FontSize="13" Opacity="0.95"/>
+                            </StackPanel>
+                        </Border>
+                    </WrapPanel>
+
+                    <!-- Список рейсов -->
+                    <DataGrid Grid.Row="1" Margin="10"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              HeadersVisibility="Column"
+                              RowHeight="44">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№ рейса" Width="90" Binding="{Binding TripId}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Водитель" Width="160" Binding="{Binding Driver}"/>
+                            <DataGridTextColumn Header="Транспорт" Width="150" Binding="{Binding Vehicle}"/>
+                            <DataGridTextColumn Header="Маршрут" Width="220" Binding="{Binding Route}"/>
+                            <DataGridTextColumn Header="Запланировано" Width="130" Binding="{Binding ScheduledTime}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Фактически" Width="130" Binding="{Binding ActualTime}" HeaderStyle="{StaticResource DataGridHeaderStyle}"/>
+                            <DataGridTextColumn Header="Статус" Width="130">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="FontWeight" Value="Medium"/>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Status"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Header="Действия" Width="160">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Content="📞" Width="32" Height="32" Margin="3" ToolTip="Связаться с водителем"/>
+                                            <Button Content="🔄" Width="32" Height="32" Margin="3" ToolTip="Изменить маршрут"/>
+                                            <Button Content="📋" Width="32" Height="32" Margin="3" ToolTip="Детали рейса"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка 3: Оптимизация загрузки -->
+            <TabItem Header="⚙️ Оптимизация загрузки">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Оптимизация загрузки транспорта"
+                               FontSize="20" FontWeight="SemiBold" Foreground="#1F2A38" Margin="0,0,0,16"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Рекомендации -->
+                        <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,12,0">
+                            <StackPanel>
+                                <TextBlock Text="💡 Рекомендации по оптимизации" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                                <StackPanel Margin="0,0,0,16">
+                                    <TextBlock Text="• Объединить заявки в районе Химки" FontWeight="Medium"/>
+                                    <TextBlock Text="  └ Экономия: 45 км, 1.5 часа" Foreground="#718096" Margin="20,4,0,0"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,0,0,16">
+                                    <TextBlock Text="• Заменить ГАЗель на КАМАЗ для маршрута #3" FontWeight="Medium"/>
+                                    <TextBlock Text="  └ Экономия: 15% топлива" Foreground="#718096" Margin="20,4,0,0"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text="• Перенести выезд на 1 час позже" FontWeight="Medium"/>
+                                    <TextBlock Text="  └ Избежать пробок в центре" Foreground="#718096" Margin="20,4,0,0"/>
+                                </StackPanel>
+                                <Button Content="✅ Применить оптимизацию"
+                                        Width="220" Height="38" Margin="0,24,0,0"
+                                        Background="#2F855A" Foreground="White"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Статистика -->
+                        <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                            <StackPanel>
+                                <TextBlock Text="📊 Статистика эффективности" FontSize="17" FontWeight="SemiBold" Margin="0,0,0,16"/>
+                                <StackPanel Margin="0,0,0,16">
+                                    <TextBlock Text="Средняя загрузка транспорта" Foreground="#4A5568"/>
+                                    <ProgressBar Value="78" Height="22" Margin="0,8,0,4" Foreground="#2B6CB0"/>
+                                    <TextBlock Text="78%" HorizontalAlignment="Right" FontWeight="Medium" Foreground="#2B6CB0"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,0,0,16">
+                                    <TextBlock Text="Использование топлива" Foreground="#4A5568"/>
+                                    <ProgressBar Value="65" Height="22" Margin="0,8,0,4" Foreground="#2F855A"/>
+                                    <TextBlock Text="65 л/100 км" HorizontalAlignment="Right" FontWeight="Medium" Foreground="#2F855A"/>
+                                </StackPanel>
+                                <StackPanel Margin="0,0,0,16">
+                                    <TextBlock Text="Выполнение в срок" Foreground="#4A5568"/>
+                                    <ProgressBar Value="92" Height="22" Margin="0,8,0,4" Foreground="#4A5568"/>
+                                    <TextBlock Text="92%" HorizontalAlignment="Right" FontWeight="Medium" Foreground="#4A5568"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text="Простой транспорта" Foreground="#4A5568"/>
+                                    <ProgressBar Value="15" Height="22" Margin="0,8,0,4" Foreground="#9B2C2C"/>
+                                    <TextBlock Text="15%" HorizontalAlignment="Right" FontWeight="Medium" Foreground="#9B2C2C"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!-- Подвал -->
+        <Border Grid.Row="2" Background="#EDF2F7">
+            <Grid>
+                <TextBlock Text="Диспетчерская служба • ООО «ЭкоБумага» • Контроль логистики и маршрутов"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="#4A5568"
+                           FontSize="12"/>
+                <TextBlock x:Name="txtVersion" Text=""
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Margin="0,0,15,0"
+                           Foreground="#718096"
+                           FontSize="11"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
